@@ -1,0 +1,152 @@
+{% extends "recipes/layout.html" %}
+{% load static %}
+
+<title>{% block title %}Cooking Book{% endblock %}</title>
+
+{% block body %}
+<div class="container">
+    <div class="row green-color" style="height: 150px; display: flex; align-items: center;">
+        <div class="col-5 lg"></div>
+        <div class="col lg title">FAMILY COOKING BOOK</div>
+    </div>
+    <div class="row green-color" style="height: 150px; display: flex; align-items: center;">
+        <div class="col-4 lg px-4 sub-title">Save your best recepiests in family cooking book.</div>
+        <div class="col lg"></div>
+    </div>
+    <!-- blank -->
+    <div class="row py-2"></div>
+    <div class="row" style="height: 300px; overflow: hidden;">
+        <img src="{% static 'recipes/images/photo-title.jpg' %}" alt="Photo of salad" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+</div>
+
+<!-- Blank rows -->
+<div class="row py-3"></div>
+<div id="recipes" class="row py-2"></div>
+
+<!-- Recipes page -->
+<div class="container">
+    <div class="row">
+        <div class="col-1 lg" style="padding: 0; display: flex;">
+            <div class="green-color" style="width: 50%; height: 100%;">&nbsp;</div>
+            <div style="width: 50%; height: 100%;">&nbsp;</div>
+        </div>
+        <div class="col-10 lg"></div>
+        <div class="col-1 lg" style="padding: 0; display: flex;">
+            <div style="width: 50%; height: 100%;"> </div>
+            <div class="green-color" style="width: 50%; height: 100%;"> </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Green half column -->
+        <div class="col-1 lg" style="padding: 0; display: flex;">
+            <div class="green-color" style="width: 50%; height: 100%;">&nbsp;</div>
+            <div style="width: 50%; height: 100%;">&nbsp;</div>
+        </div>
+        <!-- Breakfast column -->
+        <div class="col lg">
+            <div class="card-title">Breakfast</div>
+            <div class="row" style="height: 220px; overflow: hidden;">
+                <img src="{% static 'recipes/images/egg avocado toast.jpg' %}" class="card-img-top" alt="breakfast img" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="row">
+                <p class="cards-text-bold">Rise and Shine: A Morning Feast.</p>
+                <p class="cards-text">Savor the Best Breakfast Recipes to ​Start Your Day Right.</p>
+            </div>
+            <div class="row">
+                <a href="{% url 'show' 'breakfast' %}">
+                    <button type="button" class="btn green-color cards-text px-4 my-4">See Recipes</button>
+                </a>
+            </div>
+        </div>
+        <!-- Main Course column -->
+        <div class="col lg mx-5">
+            <div class="card-title">Main Course</div>
+            <div class="row" style="height: 220px; overflow: hidden;">
+                <img src="{% static 'recipes/images/main dish.png' %}" class="card-img-top" alt="main-dish img" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="row">
+                <p class="cards-text-bold">The Heart of the Meal: Main Course Masterpieces.</p>
+                <p class="cards-text">Deliciously Satisfying Recipes for Every Occasion.</p>
+            </div>
+            <div class="row">
+                <a href="{% url 'show' 'main' %}" class="btn green-color cards-text px-4 my-4" role="button">
+                    See Recipes
+                </a>
+                <!-- <a href="{% url 'show' 'main' %}">
+                    <button type="button" class="btn green-color cards-text px-4 my-4">See Recipes</button>
+                </a> -->
+            </div>
+        </div>
+        <!-- Desserts column -->
+        <div class="col lg">
+            <div class="card-title">Desserts</div>
+            <div class="row" style="height: 220px; overflow: hidden;">
+                <img src="{% static 'recipes/images/cream-raspberries-dessert.jpg' %}" class="card-img-top" alt="dessert img" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="row">
+                <p class="cards-text-bold">Sweet Endings: Decadent Dessert Delights.</p>
+                <p class="cards-text">Indulge in Irresistible Treats to Satisfy Your Sweet Tooth.</p>
+            </div>
+            <div class="row">
+                <a href="{% url 'show' 'dessert' %}">
+                    <button type="button" class="btn green-color cards-text px-4 my-4">See Recipes</button>
+                </a>
+            </div>
+        </div>
+        <!-- Green half half column -->
+        <!-- <div class="col-1 lg" style="padding: 0; display: flex; flex-direction: column;"> -->
+            <!-- Top half -->
+            <!-- <div style="width: 100%; height: 50%;"></div> -->
+            <!-- Bottom half -->
+            <!-- <div style="width: 100%; height: 50%; display: flex;"> -->
+                <!-- Right half of the bottom part -->
+                <!-- <div style="width: 50%; height: 100%;"></div> -->
+                <!-- Left half of the bottom part (empty) -->
+                <!-- <div class="green-color" style="width: 50%; height: 100%;"></div> -->
+            <!-- </div> -->
+        <!-- </div> -->
+
+        <div class="col-1 lg" style="padding: 0; display: flex;">
+            <div style="width: 50%; height: 100%;"> </div>
+            <div class="green-color" style="width: 50%; height: 100%;"> </div>
+        </div>
+    </div>
+    <div class="row py-5"></div>
+</div>
+
+<!-- Add Recipe form -->
+{% if user.is_authenticated %}
+<div id="add" class="card-title">Add Recipe</div>
+<div class='container'>
+
+    <div class='row'>
+        <div class="col-2 lg"></div>
+        <div class="col lg">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.category }}
+                <br>
+                {{ form.title }}
+                <br>
+                {{ form.description }}
+                {% if form.description.errors %}
+                <span class="error-message">{{ form.description.errors }}</span>
+                {% endif %}
+                <br>
+                {{ form.image }}
+                {% if form.image.errors  %}
+                <span class="error-message">{{ form.image.errors  }}</span>
+                {% endif %}
+                <br><br>
+
+                <button type="submit" class="btn green-color cards-text">Submit</button>
+            </form>
+        </div>
+        <div class="col-2 lg"></div>
+    </div>
+    <div class="row py-3"></div>
+</div>
+{% endif %}
+{% endblock %}

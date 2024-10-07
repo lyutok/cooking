@@ -1,0 +1,59 @@
+{% extends "recipes/layout.html" %}
+{% load static %}
+
+{% block head %}
+    <script src="{% static 'recipes/cookingbook.js' %}"></script>
+{% endblock %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+{% csrf_token %}
+<div class="container">
+    {% if messages %}
+    {% for message in messages %}
+        <div style="color: green;">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+    <div class="row green-color recipe-page-text" style="height: 70px; display: flex; justify-content: center; align-items: center;">
+        {{ title_message }}
+    </div>
+    <!-- blank -->
+    <div class="row py-3"></div>
+
+    <div id="row-container">
+        <template id="cards-row-template">
+            <div class="row card-container" style="height: auto; overflow: visible;">
+                <template id='card-template'>
+                    <div class="col lg">
+                        <div class="sub-title" style="text-align: center">Pancakes</div>
+                        <div class="row" style="height: 520px; overflow: hidden; position: relative;">
+                            <img class="card-img-top food-img fade-in" alt="breakfast img" style="position: absolute; z-index: 2;">
+                            <div class="recipe cards-text " style="position: absolute; margin: 5px; padding: 20px; z-index: 1;"></div>
+                        </div>
+                        <div class="row"></div>
+                        <div  class="buttons" style="text-align: right">
+                            <button class="like-bttn mr-5"></button>
+                            <a class="btn btn-light cards-text ml-5" href="/" style="visibility: hidden;">Edit</a>
+                            <!-- <a class="edit-link" href="/">
+                                <button class="btn btn-light cards-text ml-5" style="visibility: hidden;"></button>
+                            </a> -->
+                        </div>
+                        <div class="row py-1"></div>
+                    </div>
+                </template>
+            </div>
+        </template>
+    </div>
+
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="row" style="height: 40px; text-align: center;">
+        <div class="col lg"></div>
+        <div class="col-2 lg green-color d-flex align-items-center justify-content-center" style="height: 100%;">
+            <a class="cards-text" style="color: black;" href="{% url 'index' %}#add">Add Recipe</a>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

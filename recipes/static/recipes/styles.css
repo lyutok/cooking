@@ -1,0 +1,124 @@
+.title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 45px;
+    letter-spacing: 5px;
+}
+
+
+.sub-title {
+    font-family: 'Arimo', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+
+}
+
+
+.card-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+
+.cards-text {
+    font-family: 'Arimo', sans-serif;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+
+.cards-text-bold {
+    font-family: 'Arimo', sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+    padding-top: 40px;
+    letter-spacing: 1px;
+}
+
+
+.recipe-page-text {
+    font-family: 'Arimo', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+
+.green-color {
+    background-color: #bfba9f;
+}
+
+
+/* for overlay img */
+/* .double-img-container {
+    position: relative;
+  } */
+
+
+/* .background {
+    margin-top: 20px;
+    margin-left: 55px;
+    margin-botton: 10px;
+    /* height: %;
+    object-fit: cover;
+    height: 420px;
+  }
+
+
+.overlay {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    width: 90%;
+    /* height: 90%;
+    margin-top: 2px;
+    margin-left: 10px;
+    transform: rotate(10deg);
+    object-fit: fill;
+  } */
+
+.fade-out {
+    animation: fadeOut 0.6s ease-in-out forwards;
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0.15; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0.15; }
+    to { opacity: 1; }
+}
+
+
+.food-img {
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.like-bttn {
+    background-color: transparent;
+    border: none;
+}
+
+
+.recipe {
+    display: none;
+  }
+
+
+.error-message {
+    color: red;
+}

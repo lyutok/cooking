@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Cooking Book{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'recipes/styles.css' %}">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body data-authenticated="{{ user.is_authenticated }}">
+        <ul class="nav justify-content-end container sub-title">
+            <li class="nav-item">
+                <a class="nav-link active" style="color: gray;" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" style="color: gray;" href="{% url 'index' %}#recipes">Recipes</a>
+            </li>
+
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" style="color: gray;" href="{% url 'index' %}#add">Add</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" style="color: gray;" href="{% url 'logout' %}">LogOut</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" style="color: gray;" href="{% url 'login' %}">
+                        {% if user.is_authenticated %}LogOut{% else %}Login{% endif %}</a>
+                </li>
+            {% endif %}
+        </ul>
+
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>
