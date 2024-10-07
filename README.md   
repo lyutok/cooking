@@ -1,0 +1,108 @@
+# FAMILY COOKING BOOK
+#### Video Demo:  <URL [HERE](https://youtu.be/yM8FRdvV4Vg)>
+
+#### Description:
+
+FAMILY COOKING BOOK is an intuitive web application designed for home chefs, food enthusiasts, and anyone interested in storing and organizing
+their favorite recipes in one place. The application allows users to create, save, edit, and categorize recipes by meal type
+(Breakfast, Main Course, or Dessert). Users can also mark recipes as favorites for quick access and enjoy an engaging experience through an
+interactive flip card interface.
+
+Recipes are stored with essential information, such as the title, category, image, and a detailed description of the steps to prepare the dish.
+The application ensures ease of navigation by listing the most recent recipes at the top and prioritizing favorite recipes.
+It offers a user-friendly interface that is both visually appealing and functionally efficient.
+
+
+#### Distinctiveness and Complexity
+
+This project satisfies the distinctiveness and complexity requirements in several ways:
+
+1. Distinctiveness:
+
+While similar web applications exist for storing and managing recipes, FAMILY COOKING BOOK is unique due to its combination
+of features and the technology stack used. The project focuses on providing an interactive user experience by implementing a flip card design,
+which makes browsing through recipes more engaging. Additionally, the categorization of recipes and the prioritization of favorites are tailored
+features not found in the projects developed during the CS50 course. Unlike more static applications, this project uses dynamic front-end and back-end
+integration to provide real-time updates to users' recipe collections.
+
+2. Complexity:
+
+The application is built using Django for the backend, managing user authentication, recipe data, and database integration. This setup requires a
+solid understanding of how to structure models, views, and templates effectively.
+The flip card design, implemented using JavaScript and CSS, adds a layer of complexity as it enhances the user interface in a non-trivial way.
+This required dynamic rendering of content and asynchronous behavior for marking favorites and displaying recipes.
+The handling of image uploads using Django's Pillow library further increases the complexity by requiring proper validation, storage, and display of
+images. Managing media uploads and file paths in Django is non-trivial and adds significant depth to the project's functionality.
+The API for managing recipes involves multiple endpoints for creating, updating, and deleting records, as well as handling user authentication.
+Ensuring secure and efficient data handling between the client and server adds to the complexity.
+Overall, the combination of a rich user interface, a robust back-end, and multiple dynamic features makes this project both distinctive and complex
+compared to other projects in the course.
+
+
+#### File Structure
+
+Here is a breakdown of the key files and their functionality:
+
+- models.py: Defines the database models for Users and Recipes. The Users model handles user authentication and authorization,
+while the Recipes model stores the details of each recipe, including title, category, image, and description.
+
+- views.py: Contains the logic for rendering pages, handling form submissions, and managing the API requests for creating, editing recipes.
+
+- urls.py: Maps URLs to the corresponding views, ensuring that each page and API endpoint is correctly routed.
+
+- templates/: This directory contains all the HTML files responsible for rendering the frontend of the application. These templates are dynamically populated
+with data passed from the backend and adjust based on the user's actions and status.
+All templates are designed to be mobile responsive, ensuring a smooth user experience across different devices and screen sizes.
+
+    - layout.html: The general base template that defines the overall structure of the website. It includes shared elements
+    like the navigation bar and links to stylesheets and scripts. Other templates extend this layout to ensure a consistent look and feel across the application.
+
+    - index.html: The main homepage of the application. It dynamically displays different blocks depending on whether a user is logged in or not.
+    For unauthenticated users, the page shows options to log in or register. For logged-in users, it displays a dashboard with options to add recipes.
+
+    - register.html: The template for user registration. It contains a form that allows new users to sign up by providing their email, username, and password.
+
+    - login.html: The template for user login. It provides a form for existing users to authenticate by entering their credentials.
+
+    - edit.html: The template used for editing existing recipes. It displays a form pre-filled with the recipe data, allowing users to modify the title,
+    category, image, favorite, and description.
+
+    - show_recipes.html: This template displays a list of all recipes, dynamically rendered with data from the backend. It shows each recipe as a flip card,
+    with functionality to view details, edit, or mark recipes as favorites.
+
+
+- static/: Contains the CSS and JavaScript files. The styles.css file defines the layout and design of the website, while cookingbook.js contains JavaScript code
+for handling dynamic behaviors like flipping recipe cards and marking favorites.
+
+- constants.py: A centralized file containing all static values used in the project, such as recipe categories and paths for default images.
+This improves code maintainability.
+
+- requirements.txt: Lists all the Python dependencies necessary to run the application, including Django and Pillow.
+
+- cookingbook.js: Handles the interactive features on the frontend, including recipe flip cards, dynamic recipe sorting, and requests for marking favorites.
+
+
+#### How to Run the Application
+
+To run FAMILY COOKING BOOK locally, follow these steps:
+
+1. Install Dependencies: Ensure you have Python 3.x installed. Run the following command to install the necessary dependencies:
+pip install -r requirements.txt
+
+2. Run the Development Server: Navigate to the root directory of the project and start the Django development server:
+python manage.py runserver
+
+3. Access the Application: Once the server is running, open your web browser and navigate to http://localhost:8000 to start using the app.
+
+
+#### Additional Information
+
+FAMILY COOKING BOOK was developed as the final project for CS50’s Web Programming with Python and JavaScript course. It demonstrates the practical
+application of various web development technologies, including Django for backend management, JavaScript for dynamic frontend behavior, and database integration
+to manage users and their recipes. The project also integrates image upload functionality using the Pillow library, ensuring users can visually enhance their recipe entries.
+
+The flip card interface is a notable feature, offering a unique and dynamic way for users to browse and interact with their recipe collection.
+Additionally, user authentication ensures that only authorized users can create, edit recipes, adding a layer of security and personalization to the application.
+
+In conclusion, FAMILY COOKING BOOK offers a feature-rich and engaging platform for users to manage their favorite recipes in an organized and efficient manner,
+while also showcasing a variety of web programming skills.

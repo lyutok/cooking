@@ -1,0 +1,8 @@
+# Django web framework
+Django>=4.2,<5.0
+
+# Pillow for image handling
+Pillow>=9.0.0
+
+# To install these dependencies run:
+# pip install -r requirements.txt
